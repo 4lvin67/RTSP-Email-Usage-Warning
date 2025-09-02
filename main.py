@@ -1,9 +1,11 @@
 import time
 from classes.app import App
 
+USAGE_THRESHOLD = 90.0
+
 if __name__ == "__main__":
     print("Starting App...")
-    app = App()
+    app = App(USAGE_THRESHOLD)
 
     while True:
         try:

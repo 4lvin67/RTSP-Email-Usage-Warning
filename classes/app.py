@@ -8,10 +8,10 @@ from classes.ai import Ai
 
 class App:
     users: dict[str, User] = {}
-    usageWarningThreshold = 90.0
 
-    def __init__(self):
+    def __init__(self, usageThreshold):
         load_dotenv()
+        self.usageThreshold = usageThreshold
         self.initUsers(os.environ.get("PEOPLE_INFO"))
         self.emailServer = EmailServer(
             os.getenv('SERVER_ADDRESS'),
@@ -23,7 +23,6 @@ class App:
             os.getenv('SMS_API_KEY')
         )
         self.ai = Ai(os.environ.get("GEMINI_API_KEY"))
-
 
     def initUsers(self, peopleInfoString):
         peopleInfo = json.loads(peopleInfoString)
@@ -44,7 +43,7 @@ class App:
     def checkUsageAndNotify(self):
         for email in self.users:
             print(f'Checking {email}...')
-            if self.users[email].mailboxUsage >= self.usageWarningThreshold:
+            if self.users[email].mailboxUsage >= self.usageThreshold:
                 print(f'Mailbox usage is {self.users[email].mailboxUsage}%')
                 message = f"User: {self.users[email].userName}"
                 message += f"\nMailbox Limit: {self.users[email].maxMailboxSize} MB"
