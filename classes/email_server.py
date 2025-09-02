@@ -13,7 +13,6 @@ class EmailServer:
         return accessToken
     
     def getUsersData(self):
-        print("Getting users data...")
         url = self.server + '/api/v1/settings/domain/list-users-extra'
         accessToken = self.getToken()
         headers = {'Authorization': f'Bearer {accessToken}'}

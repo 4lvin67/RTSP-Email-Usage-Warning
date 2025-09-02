@@ -30,6 +30,7 @@ class App:
             self.users[person['email']] = User(person['email'], person['number'])
 
     def updateUsersData(self):
+        print("Getting users data...")
         usersData = self.emailServer.getUsersData()
         for data in usersData:
             if data['emailAddress'] in self.users:
@@ -56,9 +57,9 @@ class App:
                 aiMessage = self.ai.aiResponse(self.users[email].messageHistory)
 
                 print("Sending SMS...")
-                self.sms.sendSMS(self.users[email].number, aiMessage)
+                smsResponse = self.sms.sendSMS(self.users[email].number, aiMessage)
+                print("SMS Response:", smsResponse)
 
                 self.users[email].messageHistory = self.ai.generateContents("model", aiMessage, self.users[email].messageHistory)
-
             else:
                 self.users[email].messageHistory = []

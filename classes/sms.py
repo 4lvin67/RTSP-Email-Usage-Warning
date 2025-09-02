@@ -6,7 +6,6 @@ class SMS:
         self.apiKey = apiKey
     
     def sendSMS(self, number, message):
-        print("Sending SMS...")
         payload = {
             "encoding": "AUTO",
             "track": None,
@@ -23,4 +22,4 @@ class SMS:
 
         response = requests.post(self.apiUrl, json=payload, headers=headers)
 
-        print("sendSMS() - ", response.text)
+        return response.text
