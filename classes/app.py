@@ -9,10 +9,10 @@ from classes.ai import Ai
 class App:
     users: dict[str, User] = {}
 
-    def __init__(self, usageThreshold):
+    def __init__(self):
         print("Starting App...")
         load_dotenv()
-        self.usageThreshold = usageThreshold
+        self.usageThreshold = float(os.environ.get("USAGE_THRESHOLD"))
         self.initUsers(os.environ.get("PEOPLE_INFO"))
         self.emailServer = EmailServer(
             os.getenv('SERVER_ADDRESS'),

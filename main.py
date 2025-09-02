@@ -1,11 +1,10 @@
 import time
 from classes.app import App
 
-USAGE_THRESHOLD = 90.0
 TIME_INTERVAL = 3600
 
 if __name__ == "__main__":
-    app = App(USAGE_THRESHOLD)
+    app = App()
 
     while True:
         try:

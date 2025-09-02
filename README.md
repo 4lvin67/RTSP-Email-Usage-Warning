@@ -39,6 +39,9 @@ This application monitors email account storage usage and sends SMS notification
 
     # Google Gemini API Key
     GEMINI_API_KEY=your_gemini_api_key
+
+    # Usage Threshold (e.g., 80 for 80%)
+    USAGE_THRESHOLD=80
     ```
 
 ## Usage
@@ -88,3 +91,4 @@ docker stop email-warning-app
 | `SMS_API_KEY`    | Your API key for the 8x8 SMS service.                                                                   |
 | `PEOPLE_INFO`    | A JSON string containing an array of user objects, each with an `email` and a phone `number`.           |
 | `GEMINI_API_KEY` | Your API key for the Google Gemini service, used to generate notification messages.                     |
+| `USAGE_THRESHOLD`| The mailbox usage percentage that triggers a notification (e.g., `80` for 80%). Defaults to `90` if not set. |
