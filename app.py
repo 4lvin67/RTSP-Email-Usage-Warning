@@ -8,7 +8,7 @@ from ai import Ai
 
 class App:
     users: dict[str, User] = {}
-    usageWarningThreshold = 120.0
+    usageWarningThreshold = 90.0
 
     def __init__(self):
         load_dotenv()
@@ -59,5 +59,4 @@ class App:
                 self.users[email].messageHistory = self.ai.generateContents("model", aiMessage, self.users[email].messageHistory)
 
             else:
-
                 self.users[email].messageHistory = []
