@@ -5,7 +5,6 @@ USAGE_THRESHOLD = 90.0
 TIME_INTERVAL = 3600
 
 if __name__ == "__main__":
-    print("Starting App...")
     app = App(USAGE_THRESHOLD)
 
     while True:

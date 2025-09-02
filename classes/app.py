@@ -10,6 +10,7 @@ class App:
     users: dict[str, User] = {}
 
     def __init__(self, usageThreshold):
+        print("Starting App...")
         load_dotenv()
         self.usageThreshold = usageThreshold
         self.initUsers(os.environ.get("PEOPLE_INFO"))
