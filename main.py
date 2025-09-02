@@ -2,6 +2,7 @@ import time
 from classes.app import App
 
 USAGE_THRESHOLD = 90.0
+TIME_INTERVAL = 3600
 
 if __name__ == "__main__":
     print("Starting App...")
@@ -14,4 +15,4 @@ if __name__ == "__main__":
         except Exception as error:
             print(error)
 
-        time.sleep(3600)
+        time.sleep(TIME_INTERVAL)
