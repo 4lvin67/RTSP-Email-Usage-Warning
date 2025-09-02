@@ -1,5 +1,5 @@
 import time
-from app import App
+from classes.app import App
 
 if __name__ == "__main__":
     print("Starting App...")

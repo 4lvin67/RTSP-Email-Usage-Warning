@@ -15,9 +15,6 @@ class User:
         self.currentMailboxSize = round(currentMailboxSize / 1024 / 1024, 1)
         self.mailboxUsage = round(currentMailboxSize / maxMailboxSize * 100, 1)
 
-        # if (userName == 'alvin'):
-        #     self.mailboxUsage = 120.0
-
     def __str__(self):
         string = f'userName: {self.userName}'
         string += f'\nemail: {self.email}'

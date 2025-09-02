@@ -1,10 +1,10 @@
 import os
-from dotenv import load_dotenv
 import json
-from user import User
-from email_server import EmailServer
-from sms import SMS
-from ai import Ai
+from dotenv import load_dotenv
+from classes.user import User
+from classes.email_server import EmailServer
+from classes.sms import SMS
+from classes.ai import Ai
 
 class App:
     users: dict[str, User] = {}
