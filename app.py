@@ -39,11 +39,13 @@ class App:
                     data['maxMailboxSize'],
                     data['currentMailboxSize']
                 )
+        print("User data updated.")
 
     def checkUsageAndNotify(self):
         for email in self.users:
+            print(f'Checking {email}...')
             if self.users[email].mailboxUsage >= self.usageWarningThreshold:
-
+                print(f'Mailbox usage is {self.users[email].mailboxUsage}%')
                 message = f"User: {self.users[email].userName}"
                 message += f"\nMailbox Limit: {self.users[email].maxMailboxSize} MB"
                 message += f"\nMailbox Size: {self.users[email].currentMailboxSize} MB"
@@ -51,9 +53,10 @@ class App:
 
                 self.users[email].messageHistory = self.ai.generateContents("user", message, self.users[email].messageHistory)
 
+                print("Generating AI message...")
                 aiMessage = self.ai.aiResponse(self.users[email].messageHistory)
-                print("Ai Message:", aiMessage)
 
+                print("Sending SMS...")
                 self.sms.sendSMS(self.users[email].number, aiMessage)
 
                 self.users[email].messageHistory = self.ai.generateContents("model", aiMessage, self.users[email].messageHistory)
