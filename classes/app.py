@@ -45,7 +45,7 @@ class App:
     def checkUsageAndNotify(self):
         for email in self.users:
             print(f'Checking {email}...')
-            if self.users[email].mailboxUsage >= self.usageThreshold:
+            if self.users[email].mailboxUsage >= self.usageThreshold or len(self.users[email].messageHistory) != 0:
                 print(f'Mailbox usage is {self.users[email].mailboxUsage}%')
                 message = f"User: {self.users[email].userName}"
                 message += f"\nMailbox Limit: {self.users[email].maxMailboxSize} MB"
@@ -62,5 +62,9 @@ class App:
                 print("SMS Response:", smsResponse)
 
                 self.users[email].messageHistory = self.ai.generateContents("model", aiMessage, self.users[email].messageHistory)
+
+                if self.users[email].mailboxUsage < self.usageThreshold:
+                    print("Deleting message history...")
+                    self.users[email].messageHistory.clear()
             else:
-                self.users[email].messageHistory = []
+                self.users[email].messageHistory.clear()
