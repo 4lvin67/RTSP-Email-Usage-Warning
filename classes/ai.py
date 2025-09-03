@@ -28,7 +28,7 @@ Your message must follow these rules:
         self.client = genai.Client(
             api_key=apiKey
         )
-        self.setConfig("gemini-2.5-flash-lite")
+        self._setConfig("gemini-2.5-flash-lite")
 
     def aiResponse(self, messageHistory):
         response = self.client.models.generate_content(
@@ -38,7 +38,7 @@ Your message must follow these rules:
         )
         return response.text
 
-    def setConfig(self, model):
+    def _setConfig(self, model):
         self.model = model
         self.config = types.GenerateContentConfig(
             thinking_config = types.ThinkingConfig(

@@ -13,7 +13,7 @@ class App:
         print("Starting App...")
         load_dotenv()
         self.usageThreshold = float(os.environ.get("USAGE_THRESHOLD"))
-        self.initUsers(os.environ.get("USERS_INFO"))
+        self._initUsers(os.environ.get("USERS_INFO"))
         self.emailServer = EmailServer(
             os.getenv('SERVER_ADDRESS'),
             os.getenv('USERNAME'),
@@ -25,7 +25,7 @@ class App:
         )
         self.ai = Ai(os.environ.get("GEMINI_API_KEY"))
 
-    def initUsers(self, peopleInfoString):
+    def _initUsers(self, peopleInfoString):
         peopleInfo = json.loads(peopleInfoString)
         for person in peopleInfo:
             self.users[person['email']] = User(person['email'], person['number'])

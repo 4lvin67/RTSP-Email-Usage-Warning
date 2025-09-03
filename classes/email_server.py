@@ -6,7 +6,7 @@ class EmailServer:
         self.username = username
         self.password = password
 
-    def getToken(self):
+    def _getToken(self):
         url = self.server + 'api/v1/auth/authenticate-user'
         resp = requests.post(url, json={'username': self.username + "@rtsp.com.ph", 'password': self.password})
         accessToken = resp.json()['accessToken']
@@ -14,7 +14,7 @@ class EmailServer:
     
     def getUsersData(self):
         url = self.server + '/api/v1/settings/domain/list-users-extra'
-        accessToken = self.getToken()
+        accessToken = self._getToken()
         headers = {'Authorization': f'Bearer {accessToken}'}
         resp = requests.get(url, headers=headers)
         json = resp.json()
