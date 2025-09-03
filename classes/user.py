@@ -1,13 +1,12 @@
 class User:
-    userName = ''
-    messageHistory = []
-    maxMailboxSize = 0
-    currentMailboxSize = 0
-    mailboxUsage = 0
-
     def __init__(self, email, number):
         self.email = email
         self.number = number
+        self.userName = ''
+        self.messageHistory = []
+        self.maxMailboxSize = 0
+        self.currentMailboxSize = 0
+        self.mailboxUsage = 0
     
     def updateUserData(self, userName, maxMailboxSize, currentMailboxSize):
         self.userName = userName
