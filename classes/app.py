@@ -13,7 +13,7 @@ class App:
         print("Starting App...")
         load_dotenv()
         self.usageThreshold = float(os.environ.get("USAGE_THRESHOLD"))
-        self.initUsers(os.environ.get("PEOPLE_INFO"))
+        self.initUsers(os.environ.get("USERS_INFO"))
         self.emailServer = EmailServer(
             os.getenv('SERVER_ADDRESS'),
             os.getenv('USERNAME'),

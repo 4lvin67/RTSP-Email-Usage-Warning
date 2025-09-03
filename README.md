@@ -5,7 +5,7 @@ This application monitors email account storage usage and sends SMS notification
 ## Features
 
 - Monitors email mailbox size for a list of users.
-- Sends an SMS alert if mailbox usage is over 90%.
+- Sends an SMS alert if mailbox usage is over set threshold percentage.
 - Uses Google's Gemini AI to generate the content of the SMS message.
 - Runs as a background service using Docker.
 
@@ -35,7 +35,7 @@ This application monitors email account storage usage and sends SMS notification
     SMS_API_KEY=your_sms_api_key
 
     # List of users to monitor (JSON format)
-    PEOPLE_INFO=[{"email":"user1@example.com","number":"+1234567890"},{"email":"user2@example.com","number":"+0987654321"}]
+    USERS_INFO=[{"email":"user1@example.com","number":"+1234567890"},{"email":"user2@example.com","number":"+0987654321"}]
 
     # Google Gemini API Key
     GEMINI_API_KEY=your_gemini_api_key
@@ -91,4 +91,4 @@ docker stop email-warning-app
 | `SMS_API_KEY`    | Your API key for the 8x8 SMS service.                                                                   |
 | `PEOPLE_INFO`    | A JSON string containing an array of user objects, each with an `email` and a phone `number`.           |
 | `GEMINI_API_KEY` | Your API key for the Google Gemini service, used to generate notification messages.                     |
-| `USAGE_THRESHOLD`| The mailbox usage percentage that triggers a notification (e.g., `80` for 80%). Defaults to `90` if not set. |
+| `USAGE_THRESHOLD`| The mailbox usage percentage that triggers a notification (e.g., `80` for 80%).                         |
