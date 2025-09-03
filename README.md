@@ -22,7 +22,7 @@ This application monitors email account storage usage and sends SMS notification
     ```
 
 2.  **Create a `.env` file:**
-    Create a file named `.env` in the root of the project and add the necessary environment variables. Use the `.env.example` as a template.
+    Create a file named `.env` in the root of the project and add the necessary environment variables.
 
     ```env
     # Email Server API
