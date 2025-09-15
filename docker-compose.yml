@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  email-warning-app:
+    build: .
+    image: email-usage-warning
+
+    container_name: email-warning-app
+    restart: unless-stopped
+    env_file:
+      - .env
+
+# sudo docker-compose up -d --build
