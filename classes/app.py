@@ -52,6 +52,9 @@ class App:
                 message += f"\nMailbox Size: {self.users[email].currentMailboxSize} MB"
                 message += f"\nMailbox Usage: {self.users[email].mailboxUsage}%"
 
+                if self.users[email].mailboxUsage >= self.usageThreshold and len(self.users[email].messageHistory) >= 20:
+                    continue
+
                 self.users[email].messageHistory = self.ai.generateContents("user", message, self.users[email].messageHistory)
 
                 print("Generating AI message...")
@@ -66,5 +69,3 @@ class App:
                 if self.users[email].mailboxUsage < self.usageThreshold:
                     print("Deleting message history...")
                     self.users[email].messageHistory.clear()
-            else:
-                self.users[email].messageHistory.clear()
